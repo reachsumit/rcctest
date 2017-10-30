@@ -9,7 +9,8 @@ bike_data = []
 # Find how many bikes are catalogued on the websites
 def find_max():
     global max_bikes
-    res = requests.get('http://thebicyclechain.com/product-list/complete-list-of-availabile-bikes-ps897/')
+    #res = requests.get('http://thebicyclechain.com/product-list/complete-list-of-availabile-bikes-ps897/')
+    res = requests.get('http://thebicyclechain.com/product-list/bikes-1000/')
     soup = bs(res.text,'lxml')
     total_res = soup.select('div[class="setotalrecords"]')[0].text
     match = re.search(r"^(\d+)*",total_res)

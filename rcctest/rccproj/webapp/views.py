@@ -4,21 +4,41 @@ import datetime
 from rccproj.webapp.models import Bikes
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-from django.template.loader import get_template
+from rccproj.webapp.addnew import bikeForm
+from django.shortcuts import redirect
+
+def add_bike(request):
+    if request.method == 'POST':
+        form = bikeForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('/')
+        else:
+            print(form.errors)
+    else:
+        form = bikeForm()
+    return render(request, 'add_bike.html', {'form': form})
+
+ITEMS_PER_PAGE = 10
+
+def delete(request):
+    delete_id = request.GET.get('delete')
+    Bikes.objects.filter(pk=delete_id).delete()
+    return redirect('/')
+    pass
 
 # Create your views here.
-def hello(request):
-    return HttpResponse("Hello world")
-
-def add(request):
-    now = datetime.datetime.now()
-    html = "<html><body>We will add bike here. It is now %s.</body></html>" %now
-    return HttpResponse(html)
+def show(request):
+    show = request.GET.get('show')
+    print(show)
+    res = Bikes.objects.get(pk=show)
+    #html = "<html><body>Now I'll pop the display of item SKU: %s.</body></html>" %show
+    return render(request,'prod.html',{'res':res})
 
 def home_page(request):
-    #b = Bikes(SKU="123",name="meri bike",description="sahi chalti hai",rating=5,price=100,quantity=10,type='0')
+    global ITEMS_PER_PAGE
     allBikes = Bikes.objects.all()
-    paginator = Paginator(allBikes,1)
+    paginator = Paginator(allBikes,ITEMS_PER_PAGE)
 
     page = request.GET.get('page')
     try:
@@ -29,9 +49,3 @@ def home_page(request):
         thisPage = paginator.page(paginator.num_pages)
 
     return render(request,'bike.html',{'thisPage':thisPage})
-    html1 = "<html><body>"
-    html3 ="</body></html>"
-    html2 = ""
-    for qres in qqres:
-        html2 += "We will add bike here. It is now %s %s %s %d %d %d %s &nbsp " % (qres.SKU, qres.name,qres.description, qres.rating, qres.price, qres.quantity, qres.type)
-    return HttpResponse(html1+html2+html3)

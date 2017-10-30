@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from rccproj.webapp.views import hello,home_page,add
+from rccproj.webapp.views import show,home_page,add_bike,delete
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/$', hello),
+    url(r'^show/$', show),
+    url(r'^add$', add_bike),
+    url(r'^home/$', home_page),
     url(r'^$', home_page),
-    url(r'^add/$', add),
+    url(r'^add_bike/$', add_bike, name='add_bike'),
+    url(r'^delete/$', delete),
 ]

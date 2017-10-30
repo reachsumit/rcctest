@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Bike</title>
+    </head>
+
+    <body>
+        <h1>Add a Bike</h1>
+
+        <form id="bike_form" method="post" action="">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}<br />
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Add Bike" />
+        </form>
+    </body>
+
+</html>

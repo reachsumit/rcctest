@@ -1,19 +1,57 @@
 <html>
 <body>
-
-{% for items in thisPage %}
-    {{ items.name|upper }}<br />
-    ...
-{% endfor %}
-
-<div class="pagination">
+<h1>&nbsp;<a href="/">RCC Test</a><img style="float: right;" src="https://d3qi0qp55mx5f5.cloudfront.net/shared-resources/i/template/uc_wordmark_hires.gif" alt="Uchicago" width="141" height="30" /></h1>
+<p>&nbsp; Sumit Kumar, Master of Science in Analytics</p>
+<hr />
+<div><header></header>
+<div>
+<section><header>
+<h2>Welcome to University Bikestore</h2>
+</header>
+<ul>
+<li>Below bike data is scraped from this <a href="http://thebicyclechain.com/product-list/bikes-1000/" target="_blank" rel="noopener">webpage</a> of&nbsp;<a href="http://thebicyclechain.com" target="_blank" rel="noopener">TheBicycleChain</a>&nbsp;website.</li>
+<li>This webapp&nbsp;is written in Django and MySql backend.</li>
+<li>The complete code for this web app&nbsp;is available publically at&nbsp;<a href="https://github.com/sumit-code/rcctest"  target="_blank" rel="noopener">My Github</a>.&nbsp;</li>
+</ul>
+<hr />
+    {% for items in thisPage %}<br />
+<div>&nbsp;</div>
+<div>
+<table style="height: 165px;" width="668">
+<tbody>
+<tr>
+<td style="width: 326.4px; text-align: center;" colspan="2"><strong>{{ items.name|upper }}</strong></td>
+</tr>
+<tr>
+<td style="width: 326.4px;" rowspan="4"><img src="{{ items.image }}" alt="bike1" width="322" height="205" /></td>
+    <td style="width: 327.2px;"><strong>SKU:&nbsp;</strong>{{ items.SKU }}</td>
+</tr>
+<tr>
+<td style="width: 327.2px;"><strong>Category:&nbsp;</strong>{{ items.type }}</td>
+</tr>
+<tr>
+<td style="width: 327.2px;"><strong>Price:&nbsp;</strong>{{ items.price }} $</td>
+</tr>
+<tr>
+<td style="width: 327.2px; text-align: center;"><a href="/show/?show={{ items.SKU }}" class='btn btn-lg'>View Details!</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+    {% endfor %}
+<p>&nbsp;</p>
+</div>
+</section>
+</div>
+</div>
+<div class="pagination" align="center">
     <span class="step-links">
         {% if thisPage.has_previous %}
             <a href="?page={{ thisPage.previous_page_number }}">previous</a>
         {% endif %}
 
         <span class="current">
-            Page {{ thisPage.number }} of {{ thisPage.paginator.num_pages }}.
+            Page {{ thisPage.number }} of {{ thisPage.paginator.num_pages }}
         </span>
 
         {% if thisPage.has_next %}
@@ -21,6 +59,8 @@
         {% endif %}
     </span>
 </div>
-
+<p>&nbsp;</p>
+<p style="text-align: center;"><a href="/add_bike/">Add a New Bike!</a></p>
+<p>&nbsp;</p>
 </body>
 </html>

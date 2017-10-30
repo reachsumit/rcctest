@@ -1,0 +1,49 @@
+<html>
+<body>
+<h1 style="text-align: center;"><strong>Bike Name</strong></h1>
+<p><strong><img style="display: block; margin-left: auto; margin-right: auto;" src="{{ res.image }}" alt="bike photo" width="318" height="201" /></strong></p>
+<hr />
+<table style="height: 296px; width: 652px;">
+<tbody>
+<tr style="height: 35px;">
+<td style="width: 193.6px; height: 35px;">Name</td>
+<td style="width: 449.4px; height: 35px;">{{ res.name }}</td>
+</tr>
+<tr style="height: 35px;">
+<td style="width: 193.6px; height: 35px;">SKU</td>
+<td style="width: 449.4px; height: 35px;">{{ res.SKU }}</td>
+</tr>
+<tr style="height: 35px;">
+<td style="width: 193.6px; height: 35px;">Category</td>
+<td style="width: 449.4px; height: 35px;">{{ res.type }}</td>
+</tr>
+<tr style="height: 100.7px;">
+<td style="width: 193.6px; height: 100.7px;">Description</td>
+<td style="width: 449.4px; height: 100.7px;">{{ res.description }}</td>
+</tr>
+<tr style="height: 35px;">
+<td style="width: 193.6px; height: 35px;">Avg customer rating</td>
+<td style="width: 449.4px; height: 35px;">{{ res.rating }}</td>
+</tr>
+<tr style="height: 36px;">
+<td style="width: 193.6px; height: 36px;">Price</td>
+<td style="width: 449.4px; height: 36px;">{{ res.price }} $ (USD)</td>
+</tr>
+<tr style="height: 36px;">
+<td style="width: 193.6px; height: 36px;">quantity</td>
+<td style="width: 449.4px; height: 36px;">{{ res.quantity }}</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<table style="height: 28px; margin-left: auto; margin-right: auto;" width="249">
+<tbody>
+<tr>
+    <td style="width: 76px; text-align: center;"><a href="/home/"><strong>Back</strong></a></td>
+<td style="width: 76.8px; text-align: center;"><a href="/delete/?delete={{ res.SKU }}"><strong>Delete</strong></a></td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;">&nbsp;</p>
+</body>
+</html>
