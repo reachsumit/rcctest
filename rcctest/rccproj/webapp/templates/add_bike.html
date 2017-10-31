@@ -1,26 +1,33 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>New Bike</title>
+        <title>New Bike Form</title>
     </head>
 
     <body>
-        <h1>Add a Bike</h1>
-
         <form id="bike_form" method="post" action="">
-
-            {% csrf_token %}
-            {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
+            <table frame="box" align="center">
+            <tbody>
+            <tr>
+                <td style="width: 195.4px; text-align: center;" colspan="2"><h1>Add a new bike</h1></td>
+            </tr>
+              {% csrf_token %}
 
             {% for field in form.visible_fields %}
                 {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}<br />
+
+            <br />
+            <tr>
+            <td style="width: 195.4px;">{{ field.help_text }}</td>
+            <td style="width: 465.6px;">{{ field }}</td>
+            </tr>
+
             {% endfor %}
 
-            <input type="submit" name="submit" value="Add Bike" />
+            <tr>
+            <td style="height:40px; width:180px; text-align: center;" colspan="2"><input type="submit" name="submit" value="Add Bike" /></td>
+            </tr>
+            </tbody>
+            </table>
         </form>
     </body>
 
